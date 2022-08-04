@@ -8,16 +8,15 @@
 uint32_t cubic_root(uint32_t M, int K){ //Cubic root of (M) with K bits of precision
   register uint32_t f =  1 << K;
   register uint32_t f_sqrt_3 =  1 << K;
-  int i;
-  register uint32_t u, temp;
+  register int i;
+  register uint32_t u;
   for (i = 0; i < K-1; i++){
-    temp = (1 << (K- i)) + (1 << K);//2 ^ -i + 1
-    u = FIXED_MULT(temp, temp, K);
-    u = FIXED_MULT(u, temp, K);
-    u = FIXED_MULT(f, u, K);
+    u = f + (f >> i);
+    u = u + (u >> i);
+    u = u + (u >> i);
     if (u <= (M << K)){
       f = u;
-      f_sqrt_3 =  FIXED_MULT(f_sqrt_3, temp, K);
+      f_sqrt_3 =  f_sqrt_3 + (f_sqrt_3 >> i);
     }
   }
   return f_sqrt_3;
