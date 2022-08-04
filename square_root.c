@@ -20,7 +20,7 @@ uint32_t fixed_multiplication(uint32_t x, uint32_t y, int n_bits){
   return result;
 }
 
-uint32_t square_root(float M, int K){ //Square root of (M) with K bits of precision
+uint32_t square_root(uint32_t M, int K){ //Square root of (M) with K bits of precision
   uint32_t f = 1 << K;
   uint32_t f_sqrt = 1 << K;
   uint32_t u, u_sqrt, temp;
@@ -34,12 +34,11 @@ uint32_t square_root(float M, int K){ //Square root of (M) with K bits of precis
       f_sqrt = u_sqrt;
     }
   }
-  return fixed_to_float(f_sqrt, K);
+  return f_sqrt;
 }
 
 
-
-float cubic_root(float M, int K){ //Cubic root of (M) with K bits of precision
+uint32_t cubic_root(uint32_t M, int K){ //Cubic root of (M) with K bits of precision
   uint32_t f =  1 << K;
   uint32_t f_sqrt_3 =  1 << K;
   int i;
@@ -53,19 +52,15 @@ float cubic_root(float M, int K){ //Cubic root of (M) with K bits of precision
       f_sqrt_3 = u_sqrt_3;
     }
   }
-  return fixed_to_float(f_sqrt_3, K);
+  return f_sqrt_3;
 }
 
 int main(int argc, char *argv[]){
-  float n = 4;
-  double x = sqrt(n);
-  float y = square_root(n, 15);
-  
-  printf("Square Root of %f\nsqrt function: %f\nccm: %f\n", n, x, y);
+  uint32_t n = 4;
+  uint32_t y = square_root(n, 15);
 
-  float n3 = 16;
-  double x3 = cbrt(n);
-  float y3 = cubic_root(n, 10);
+  uint32_t n3 = 16;
+  uint32_t y3 = cubic_root(n, 10);
   
   printf("\nCubic Root of %f\ncbrt function: %f\nCCM: %f\n", n3, x3, y3);
   }
