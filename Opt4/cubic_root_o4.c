@@ -8,11 +8,11 @@ uint32_t cubic_root(uint32_t M, int K){ //Cubic root of (M) with K bits of preci
   register uint32_t f_sqrt_3 =  1 << K;
   register int i;
   register uint32_t u;
-
+  register int temp1, temp2;
   for (i = 0; i < K-1; i++){
-    u = f + (f >> i);
-    u = u + (u >> i);
-    u = u + (u >> i);
+    temp1 = f + (f >> i);
+    temp2 = temp1 + (temp1 >> i);
+    u = temp2 + (temp2 >> i);
     
     if (u <= (M << K)){
       f = u;
