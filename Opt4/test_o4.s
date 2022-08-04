@@ -8,7 +8,7 @@
 	.eabi_attribute 26, 2
 	.eabi_attribute 30, 6
 	.eabi_attribute 18, 4
-	.file	"test_o3.c"
+	.file	"test_o4.c"
 	.text
 	.align	2
 	.global	cubic_root
@@ -40,27 +40,22 @@ cubic_root:
 	mov	r3, r2, lsr r1
 	ldr	r2, [fp, #-28]
 	add	r3, r3, r2
-	str	r3, [fp, #-16]
-	ldr	r1, [fp, #-16]
-	ldr	r2, [fp, #-20]
-	mov	r3, r1, lsr r2
-	ldr	r1, [fp, #-16]
-	add	r1, r1, r3
-	str	r1, [fp, #-16]
-	ldr	r2, [fp, #-16]
+	mov	r2, r3
 	ldr	r1, [fp, #-20]
-	mov	r3, r2, lsr r1
-	ldr	r2, [fp, #-16]
-	add	r2, r2, r3
-	str	r2, [fp, #-16]
+	mov	r3, r2, asr r1
+	add	r2, r3, r2
+	ldr	r1, [fp, #-20]
+	mov	r3, r2, asr r1
+	add	r3, r3, r2
+	str	r3, [fp, #-16]
 	ldr	r2, [fp, #-8]
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	ldr	r1, [fp, #-16]
-	cmp	r3, r1
-	bcc	.L3
 	ldr	r2, [fp, #-16]
-	str	r2, [fp, #-28]
+	cmp	r3, r2
+	bcc	.L3
+	ldr	r3, [fp, #-16]
+	str	r3, [fp, #-28]
 	ldr	r1, [fp, #-24]
 	ldr	r2, [fp, #-20]
 	mov	r3, r1, lsr r2
@@ -111,15 +106,12 @@ square_root:
 	ldr	r2, [fp, #-28]
 	ldr	r1, [fp, #-20]
 	mov	r3, r2, asl r1
-	ldr	r2, [fp, #-28]
+	ldr	r1, [fp, #-28]
+	add	r2, r3, r1
+	ldr	r1, [fp, #-20]
+	mov	r3, r2, asl r1
 	add	r3, r3, r2
 	str	r3, [fp, #-16]
-	ldr	r1, [fp, #-16]
-	ldr	r2, [fp, #-20]
-	mov	r3, r1, asl r2
-	ldr	r1, [fp, #-16]
-	add	r1, r1, r3
-	str	r1, [fp, #-16]
 	ldr	r2, [fp, #-8]
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3

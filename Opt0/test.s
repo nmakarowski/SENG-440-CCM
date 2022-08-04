@@ -8,76 +8,78 @@
 	.eabi_attribute 26, 2
 	.eabi_attribute 30, 6
 	.eabi_attribute 18, 4
-	.file	"test_o3.c"
+	.file	"test.c"
 	.text
 	.align	2
 	.global	cubic_root
 	.type	cubic_root, %function
 cubic_root:
 	@ Function supports interworking.
-	@ args = 0, pretend = 0, frame = 24
+	@ args = 0, pretend = 0, frame = 32
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	str	fp, [sp, #-4]!
 	add	fp, sp, #0
-	sub	sp, sp, #28
+	sub	sp, sp, #36
 	str	r0, [fp, #-8]
 	str	r1, [fp, #-12]
 	mov	r2, #1
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	str	r3, [fp, #-28]
+	str	r3, [fp, #-32]
 	mov	r2, #1
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	str	r3, [fp, #-24]
+	str	r3, [fp, #-28]
 	mov	r1, #0
-	str	r1, [fp, #-20]
+	str	r1, [fp, #-24]
 	b	.L2
 .L4:
-	ldr	r2, [fp, #-28]
-	ldr	r1, [fp, #-20]
+	ldr	r2, [fp, #-32]
+	ldr	r1, [fp, #-24]
 	mov	r3, r2, lsr r1
-	ldr	r2, [fp, #-28]
+	ldr	r2, [fp, #-32]
 	add	r3, r3, r2
-	str	r3, [fp, #-16]
-	ldr	r1, [fp, #-16]
-	ldr	r2, [fp, #-20]
-	mov	r3, r1, lsr r2
-	ldr	r1, [fp, #-16]
-	add	r1, r1, r3
-	str	r1, [fp, #-16]
-	ldr	r2, [fp, #-16]
+	str	r3, [fp, #-20]
 	ldr	r1, [fp, #-20]
+	ldr	r2, [fp, #-24]
+	mov	r3, r1, lsr r2
+	ldr	r1, [fp, #-20]
+	add	r1, r1, r3
+	str	r1, [fp, #-20]
+	ldr	r2, [fp, #-20]
+	ldr	r1, [fp, #-24]
 	mov	r3, r2, lsr r1
-	ldr	r2, [fp, #-16]
+	ldr	r2, [fp, #-20]
 	add	r2, r2, r3
-	str	r2, [fp, #-16]
+	str	r2, [fp, #-20]
+	ldr	r1, [fp, #-28]
+	ldr	r2, [fp, #-24]
+	mov	r3, r1, lsr r2
+	ldr	r1, [fp, #-28]
+	add	r3, r3, r1
+	str	r3, [fp, #-16]
 	ldr	r2, [fp, #-8]
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	ldr	r1, [fp, #-16]
-	cmp	r3, r1
+	ldr	r2, [fp, #-20]
+	cmp	r3, r2
 	bcc	.L3
-	ldr	r2, [fp, #-16]
-	str	r2, [fp, #-28]
-	ldr	r1, [fp, #-24]
-	ldr	r2, [fp, #-20]
-	mov	r3, r1, lsr r2
-	ldr	r1, [fp, #-24]
-	add	r1, r1, r3
-	str	r1, [fp, #-24]
+	ldr	r3, [fp, #-20]
+	str	r3, [fp, #-32]
+	ldr	r1, [fp, #-16]
+	str	r1, [fp, #-28]
 .L3:
-	ldr	r2, [fp, #-20]
+	ldr	r2, [fp, #-24]
 	add	r2, r2, #1
-	str	r2, [fp, #-20]
+	str	r2, [fp, #-24]
 .L2:
 	ldr	r3, [fp, #-12]
 	sub	r3, r3, #1
-	ldr	r1, [fp, #-20]
+	ldr	r1, [fp, #-24]
 	cmp	r3, r1
 	bgt	.L4
-	ldr	r3, [fp, #-24]
+	ldr	r3, [fp, #-28]
 	mov	r0, r3
 	add	sp, fp, #0
 	ldmfd	sp!, {fp}
@@ -88,63 +90,65 @@ cubic_root:
 	.type	square_root, %function
 square_root:
 	@ Function supports interworking.
-	@ args = 0, pretend = 0, frame = 24
+	@ args = 0, pretend = 0, frame = 32
 	@ frame_needed = 1, uses_anonymous_args = 0
 	@ link register save eliminated.
 	str	fp, [sp, #-4]!
 	add	fp, sp, #0
-	sub	sp, sp, #28
+	sub	sp, sp, #36
 	str	r0, [fp, #-8]
 	str	r1, [fp, #-12]
 	mov	r2, #1
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	str	r3, [fp, #-28]
+	str	r3, [fp, #-32]
 	mov	r2, #1
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	str	r3, [fp, #-24]
+	str	r3, [fp, #-28]
 	mov	r1, #0
-	str	r1, [fp, #-20]
+	str	r1, [fp, #-24]
 	b	.L7
 .L9:
-	ldr	r2, [fp, #-28]
+	ldr	r2, [fp, #-32]
+	ldr	r1, [fp, #-24]
+	mov	r3, r2, asl r1
+	ldr	r2, [fp, #-32]
+	add	r3, r3, r2
+	str	r3, [fp, #-20]
 	ldr	r1, [fp, #-20]
+	ldr	r2, [fp, #-24]
+	mov	r3, r1, asl r2
+	ldr	r1, [fp, #-20]
+	add	r1, r1, r3
+	str	r1, [fp, #-20]
+	ldr	r2, [fp, #-28]
+	ldr	r1, [fp, #-24]
 	mov	r3, r2, asl r1
 	ldr	r2, [fp, #-28]
 	add	r3, r3, r2
 	str	r3, [fp, #-16]
-	ldr	r1, [fp, #-16]
-	ldr	r2, [fp, #-20]
-	mov	r3, r1, asl r2
-	ldr	r1, [fp, #-16]
-	add	r1, r1, r3
-	str	r1, [fp, #-16]
 	ldr	r2, [fp, #-8]
 	ldr	r3, [fp, #-12]
 	mov	r3, r2, asl r3
-	ldr	r2, [fp, #-16]
-	cmp	r3, r2
+	ldr	r1, [fp, #-20]
+	cmp	r3, r1
 	bcc	.L8
+	ldr	r2, [fp, #-20]
+	str	r2, [fp, #-32]
 	ldr	r3, [fp, #-16]
 	str	r3, [fp, #-28]
-	ldr	r1, [fp, #-24]
-	ldr	r2, [fp, #-20]
-	mov	r3, r1, asl r2
-	ldr	r1, [fp, #-24]
-	add	r1, r1, r3
-	str	r1, [fp, #-24]
 .L8:
-	ldr	r2, [fp, #-20]
-	add	r2, r2, #1
-	str	r2, [fp, #-20]
+	ldr	r1, [fp, #-24]
+	add	r1, r1, #1
+	str	r1, [fp, #-24]
 .L7:
 	ldr	r3, [fp, #-12]
 	sub	r3, r3, #1
-	ldr	r1, [fp, #-20]
-	cmp	r3, r1
+	ldr	r2, [fp, #-24]
+	cmp	r3, r2
 	bgt	.L9
-	ldr	r3, [fp, #-24]
+	ldr	r3, [fp, #-28]
 	mov	r0, r3
 	add	sp, fp, #0
 	ldmfd	sp!, {fp}
