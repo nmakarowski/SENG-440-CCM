@@ -14,9 +14,10 @@ uint32_t cubic_root(uint32_t M, int K){ //Cubic root of (M) with K bits of preci
     temp = (1 << (K- i)) + (1 << K);//2 ^ -i + 1
     u =  FIXED_MULT(f, FIXED_MULT(temp, FIXED_MULT(temp, temp, K), K), K);
     u_sqrt_3 = FIXED_MULT(f_sqrt_3, temp, K);
-    if (u < (M << K)){
+    if (u <= (M << K)){
       f = u;
       f_sqrt_3 = u_sqrt_3;
     }
   }
+  return f_sqrt_3;
 }
