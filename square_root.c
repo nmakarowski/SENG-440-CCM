@@ -62,5 +62,4 @@ int main(int argc, char *argv[]){
   uint32_t n3 = 16;
   uint32_t y3 = cubic_root(n, 10);
   
-  printf("\nCubic Root of %f\ncbrt function: %f\nCCM: %f\n", n3, x3, y3);
   }
