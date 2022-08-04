@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <math.h>
-
-#define SHIFT_SQRT 15
-#define SHIFT_CBRT 10 
 
 
 uint32_t fixed_multiplication(uint32_t x, uint32_t y, int n_bits){
@@ -28,10 +24,3 @@ uint32_t square_root(uint32_t M, int K){ //Square root of (M) with K bits of pre
   }
   return f_sqrt;
 }
-
-
-
-int main(int argc, char *argv[]){
-  uint32_t n = 4;
-  uint32_t y = square_root(n, 15);
-  }
